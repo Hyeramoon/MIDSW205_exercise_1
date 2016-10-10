@@ -1,0 +1,14 @@
+QUESTION: Are average scores for hospital quality or procedural variability correlated with patient survey responses? 
+
+APPROACH:
+Pearson coefficient of correlation between the hospital’s percentage of procedures over top 25% score and the hospital’s survey score from patients (sum of hcahps_base_score and  hcahps_consistency_score) is used to measure the degree of correlation between average scores for hospital quality and patient survey responses. 
+
+Pearson coefficient of correlation is an appropriate approach since it ranges between -1 and 1 and thus, indicates the strength of the association and positive or negative relationship between the 2 variables.
+
+Note: from best_hospitals.txt, it is assumed that the average scores for hospital quality is better measured by the hospital’s percentage of procedures over a certain threshold than the average of scores which does not provide the right measure for quality of care.
+
+
+CONCLUSION:
+The Pearson coefficient of correlation is 0.23 which indicates: 
+1) a positive relationship between hospital quality based on scores and patients survey scores, but
+2) a quite weak association between them.

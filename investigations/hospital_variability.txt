@@ -1,0 +1,14 @@
+QUESTION: Which procedures have the greatest variability between hospitals? 
+
+APPROACH:
+Standard deviation per measure_id (i.e. procedure) is used to measure the variability of procedures. It is an appropriate approach since the standard deviation measures how far the score for a procedure is from the mean. Higher the standard deviation, more spread out are the scores around the mean which can be interpreted as higher variability of the procedures among hospitals.
+
+Since the scores do not have the same measure type, in order to compare the standard deviations with the units, standard deviations have been calculated separately for 2 groups:
+1) score that is a rate measure
+2) score that is a time measure
+
+
+CONCLUSION:
+For rate scores, the top 10 procedures with greatest variabilities have standard deviation that are not too different. Also the procedures vary.
+
+For the time scores, the top 10 procedures with greatest variabilities have standard deviation that are very different: average time patients spent in the emergency department have significantly higher variability than other procedures.

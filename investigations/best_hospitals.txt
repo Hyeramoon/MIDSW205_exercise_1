@@ -1,0 +1,43 @@
+QUESTION: What hospitals are models of high-quality care? That is, which hospitals have the most consistently high scores for a variety of procedures?
+
+
+APPROACH:
+Based on the data provided from CMS, procedure is defined as “measure_id” in this exercise.
+
+The score of each measure_id is either a rate (i.e. percentage) or a time unit. There is also one measure that corresponds to the volume (very high, high, medium, low) but this measure will not be included in our analysis for simplicity.
+
+In most cases, higher rate corresponds to a more effective care. In the case of death or readmission, however, lower rate corresponds to a higher quality care. In case of time measures, a lower number always indicate a more timely procedure, thus a better quality care.
+
+A table (see transformation phase) containing the 90th and 75th percentile thresholds is being used in order to address: 
+
+1) Different types of units of score (rate vs. time) and; 
+2) Different meaning of a “better” score (sometimes the higher the better; other times the lower the better),
+
+Each hospital’s measure_id is compared to the 90th percentile threshold, and depending on the score type (rate or time) and higher score meaning (higher the better or otherwise). A boolean variable will be used to flag each measure to indicate whether the hospital has successfully achieved the 90th percentile threshold. The process will be repeated for all hospitals. 
+
+Then for each hospital, the percentage of procedures that has successfully achieved the 90th percentile threshold is calculated.  
+
+The same exercise is carried out for the 75th percentile threshold for the top 25% in quality of care.
+
+To maintain data credibility, only the hospitals with 15 or more scored procedures are retained (note that at least 75% of hospitals have at least 15 procedures with valid scores).
+
+This approach is more appropriate than comparing the average of scores between hospitals to determine the hospital with the highest quality care since:
+
+1) The approach used takes into account the consistency of scores and illustrates a more comprehensive picture of a hospital’s performance. When averaging scores, outliers can significantly impact the average and lead to misleading results. If average scores are used, mediocre hospitals can theoretically still rank higher than its peers simply by outperforming on a handful of metrics (thus driving up the average). 
+
+2) It allows to deal with scores with different measure types: Rate vs. time, higher the better vs. otherwise. 
+
+
+CONCLUSION:
+
+The top 10 hospitals ranked under the 90th percentile threshold were compared to the top 10 under the 75th percentile threshold. 
+
+Interestingly the #10 hospital ranked using the 90th threshold achieved it in 71% of the measures. This compares to 80% at the #10 hospital using the 75th threshold, indicating a higher performance across MORE measures. Thus, it can be concluded that the 75th percentile threshold is more indicative of a hospital’s quality than drawing the line at 90th percentile.  
+
+APPENDIX: 
+
+How to read the table output of best_hospitals:
+1. First column: hospital id number
+2. Second column: hospital name
+3. Third column: (number of procedures where the hospital score is greater than or equal to the top 25% threshold for each procedure) divided by (number of procedures with a valid score for the hospital)
+4. Fourth column: number of procedures with scores taken into account when calculating third column

@@ -1,0 +1,11 @@
+QUESTION: What states are models of high-quality care?
+
+APPROACH:
+Same approach as the one described in best_hospitals.txt. Instead of grouping by hospitals, group by states.
+
+Note that just like for the hospital analysis, in order to keep only the states with a reasonable number of procedures, only the states with more than 400 scored procedure have been retained. This resulted in 10% of all states being removed from my analysis because they had too few measured procedures. 
+
+CONCLUSION:
+Using the same reasoning as the previous question, the 10th and 25th percentile thresholds were initially compared. However, in either case the scores varied much more within states than hospitals and therefore I was unable to obtain a meaningful answer. 
+
+Alternatively, I looked for hospitals in each state where they achieved better than the median threshold (vs. 90th/75th %-tile). The result was more meaningful at 58 to 66 hospitals for the top 10 states. Ultimately, this was the benchmark used to identify the top 10 states with best quality of care.
